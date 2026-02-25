@@ -1,0 +1,6 @@
+spring.application.name=demo
+
+
+player.username=player1
+player.age=25
+player.address=New York
