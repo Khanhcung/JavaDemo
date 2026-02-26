@@ -3,7 +3,11 @@ package com.shopdev.demo.util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 
 @Component
 public class EmailSendUtil {
@@ -29,6 +33,27 @@ public class EmailSendUtil {
             System.out.println("Email sent successfully to " + to);
         } catch (Exception e) {
             System.err.println("Failed to send email: " + e.getMessage());
+        }
+    }
+
+    public void sendHtmlEmail(String to, String subject, String htmlBody) {
+
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+
+            helper.setFrom(EMAIL_HOST);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(htmlBody, true); // true = isHtml
+
+            mailSender.send(mimeMessage);
+            System.out.println("Email sent successfully to " + to);
+        } catch (MessagingException e) {
+            System.err.println("Failed to create/send HTML email: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Unexpected error sending HTML email: " + e.getMessage());
         }
     }
 }
