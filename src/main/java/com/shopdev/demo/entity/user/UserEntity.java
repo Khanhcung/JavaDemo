@@ -2,10 +2,14 @@ package com.shopdev.demo.entity.user;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
+
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import java.math.BigDecimal;
+import com.shopdev.demo.entity.feed.FeedEntity;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -27,4 +31,11 @@ public class UserEntity {
 
     @Column(columnDefinition = "int", name ="Point"  )
     private int point;
+    
+    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL,orphanRemoval =  true,fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private List<FeedEntity> feeds;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private PassportEntity passport;
 }
