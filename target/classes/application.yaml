@@ -11,9 +11,9 @@ spring:
     active: dev
 
   datasource:
-    url: jdbc:sqlserver://DESKTOP-F5BV459;instanceName=SQLEXPRESS;databaseName=AuthDb;encrypt=false;trustServerCertificate=true
+    url: jdbc:sqlserver://DESKTOP-597AHCT;instanceName=SQLEXPRESS;databaseName=AuthDb;encrypt=false;trustServerCertificate=true
     username: sa
-    password: khanh123
+    password: khanh1994
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     database: sql_server
@@ -25,3 +25,17 @@ spring:
       hibernate:
         format_sql: true
         use_sql_comments: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: a
+    password: b
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            enable: true

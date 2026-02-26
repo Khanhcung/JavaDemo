@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -17,11 +16,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductEntity create(ProductEntity prod) {
-        return productRepo.create(prod);
+        return prod;
     }
 
     @Override
     public List<ProductEntity> findAllProds() {
-        return productRepo.findAllProds();
+        return null;
     }
 }

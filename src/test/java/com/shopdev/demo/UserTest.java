@@ -17,7 +17,7 @@ import jakarta.transaction.Transactional;
 
 @SpringBootTest
 public class UserTest {
-    
+
     @Autowired
     private UserRepo userRepo;
     @Autowired
@@ -34,8 +34,8 @@ public class UserTest {
         user.setEmail("test@example.com   ");
 
         feed1.setTitle("title 1");
-    
-        user.setFeeds( new ArrayList<>(List.of(feed1)) );
+
+        user.setFeeds(new ArrayList<>(List.of(feed1)));
         feed1.setUser(user);
         userRepo.save(user);
         feedRepo.save(feed1);
